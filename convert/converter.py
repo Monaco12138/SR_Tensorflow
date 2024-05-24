@@ -49,7 +49,7 @@ def representative_dataset():
 #         yield [lr]
 
 converter.optimizations = [tf.lite.Optimize.DEFAULT]
-# converter.representative_dataset = representative_dataset
+converter.representative_dataset = representative_dataset
 # converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS_INT8]
 # converter.target_spec.supported_types = [tf.float16]
 # converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS, tf.lite.OpsSet.SELECT_TF_OPS]

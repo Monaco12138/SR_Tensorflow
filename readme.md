@@ -108,8 +108,13 @@ for epoch in tqdm(range(num_epochs + 1)):
 * 量化，具体可参见tflite[官网](https://www.tensorflow.org/lite/performance/model_optimization)
   ```python
   ## Dynamic range quantization
+  def representative_dataset():
+      for _ in range(3):
+          data = np.random.rand(1, h, w, 3)
+          yield [data.astype(np.float32)]
   converter.optimizations = [tf.lite.Optimize.DEFAULT]
-
+  converter.representative_dataset = representative_dataset
+  
   ## Full integer quantization
   def representative_dataset():
     for lr, hr in representative_dataloader.Dataset():
